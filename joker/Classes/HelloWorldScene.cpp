@@ -1,6 +1,6 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
-
+#include "xu.h";
 using namespace cocos2d;
 using namespace CocosDenshion;
 
@@ -70,6 +70,10 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(pSprite, 0);
+    
+    
+    CCSprite *hero = CCSprite::create(DIALOG_HERO);
+    this->addChild(hero);
     
     return true;
 }

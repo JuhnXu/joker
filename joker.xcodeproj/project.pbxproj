@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		487F1B6E17573FD600639D24 /* hero.png in Resources */ = {isa = PBXBuildFile; fileRef = 487F1B6D17573FD600639D24 /* hero.png */; };
 		48C3B85517573C900058D6B3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C3B85417573C900058D6B3 /* QuartzCore.framework */; };
 		48C3B85717573C900058D6B3 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C3B85617573C900058D6B3 /* OpenGLES.framework */; };
 		48C3B85917573C900058D6B3 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C3B85817573C900058D6B3 /* OpenAL.framework */; };
@@ -269,6 +270,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		487F1B6D17573FD600639D24 /* hero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hero.png; path = Resources/hero.png; sourceTree = "<group>"; };
+		487F1B6F1757403100639D24 /* xu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xu.h; path = Classes/xu.h; sourceTree = "<group>"; };
 		48C3B85117573C900058D6B3 /* joker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = joker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48C3B85417573C900058D6B3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		48C3B85617573C900058D6B3 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -905,6 +908,7 @@
 				48C3B86617573C900058D6B3 /* CloseNormal.png */,
 				48C3B86817573C900058D6B3 /* CloseSelected.png */,
 				48C3B86A17573C900058D6B3 /* Default.png */,
+				487F1B6D17573FD600639D24 /* hero.png */,
 				48C3B86C17573C900058D6B3 /* HelloWorld.png */,
 				48C3B86E17573C900058D6B3 /* Icon-72.png */,
 				48C3B87017573C900058D6B3 /* Icon-Small-50.png */,
@@ -1980,6 +1984,7 @@
 				48C3BBC817573C960058D6B3 /* AppDelegate.cpp */,
 				48C3BBCA17573C960058D6B3 /* HelloWorldScene.h */,
 				48C3BBCB17573C960058D6B3 /* HelloWorldScene.cpp */,
+				487F1B6F1757403100639D24 /* xu.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2047,6 +2052,7 @@
 				48C3B87B17573C900058D6B3 /* iTunesArtwork in Resources */,
 				48C3B91717573C910058D6B3 /* ChangeLog in Resources */,
 				48C3BA8117573C940058D6B3 /* project.pbxproj in Resources */,
+				487F1B6E17573FD600639D24 /* hero.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2430,6 +2436,7 @@
 				48C3BBD117573C960058D6B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

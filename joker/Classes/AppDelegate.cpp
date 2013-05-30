@@ -30,6 +30,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCDirector *pDirector = CCDirector::sharedDirector();
     pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
 
+    // 铺满屏幕，如果宽高比不一致，会拉伸导致失真
+    CCEGLView::sharedOpenGLView()->setDesignResolutionSize(320, 480, kResolutionExactFit);
     // turn on display FPS
     pDirector->setDisplayStats(true);
 
