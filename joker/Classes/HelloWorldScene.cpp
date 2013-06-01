@@ -1,6 +1,7 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
-#include "xu.h";
+#include "xu.h"
+#include "Hero.h"
 using namespace cocos2d;
 using namespace CocosDenshion;
 
@@ -46,22 +47,12 @@ bool HelloWorld::init()
     pMenu->setPosition( CCPointZero );
     this->addChild(pMenu, 1);
 
-    /////////////////////////////
-    // 3. add your codes below...
-
-    // add a label shows "Hello World"
-    // create and initialize a label
-    CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Thonburi", 34);
+   
 
     // ask director the window size
     CCSize size = CCDirector::sharedDirector()->getWinSize();
 
-    // position the label on the center of the screen
-    pLabel->setPosition( ccp(size.width / 2, size.height - 20) );
-
-    // add the label as a child to this layer
-    this->addChild(pLabel, 1);
-
+   
     // add "HelloWorld" splash screen"
     CCSprite* pSprite = CCSprite::create("HelloWorld.png");
 
@@ -72,8 +63,23 @@ bool HelloWorld::init()
     this->addChild(pSprite, 0);
     
     
-    CCSprite *hero = CCSprite::create(DIALOG_HERO);
-    this->addChild(hero);
+    CCSprite *bg1 = CCSprite::create(BG_1);
+    this->addChild(bg1);
+    bg1->setPosition(ccp(WINSIZE_W/2,WINSIZE_H/2));
+    
+    //加载英雄动画
+    CCNodeLoaderLibrary *lib = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
+    lib->registerCCNodeLoader("Hero", HeroLoader::loader());
+    CCBReader *ccbr = new CCBReader(lib);
+    ccbr->autorelease();
+    
+    herox = ccbr->readNodeGraphFromFile("hero.ccbi");
+    herox->setPosition(ccp(WINSIZE_W/2,WINSIZE_H/2));
+    this->addChild(herox);
+    
+    //开启触摸
+    setTouchEnabled(true);
+    
     
     return true;
 }
@@ -85,4 +91,12 @@ void HelloWorld::menuCloseCallback(CCObject* pSender)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
 #endif
+}
+void HelloWorld::ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent)
+{
+
+    ((GameObject *) (herox))->handleCollisionWith(NULL);
+    
+    
+
 }
