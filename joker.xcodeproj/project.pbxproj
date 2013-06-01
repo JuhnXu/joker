@@ -13,6 +13,13 @@
 		481619261759E7D500420CA9 /* Hero.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 481619241759E7D500420CA9 /* Hero.cpp */; };
 		481619291759E81300420CA9 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 481619271759E81300420CA9 /* GameObject.cpp */; };
 		4816192B1759ED9D00420CA9 /* bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4816192A1759ED9D00420CA9 /* bg1.png */; };
+		4816192E1759EFBE00420CA9 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4816192C1759EFBE00420CA9 /* MenuScene.cpp */; };
+		48240B4A175A4FA90097BA76 /* bgMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 48240B46175A4FA90097BA76 /* bgMenu.png */; };
+		48240B4B175A4FA90097BA76 /* menu_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 48240B47175A4FA90097BA76 /* menu_n.png */; };
+		48240B4C175A4FA90097BA76 /* menu_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 48240B48175A4FA90097BA76 /* menu_s.png */; };
+		48240B4D175A4FA90097BA76 /* MenuScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 48240B49175A4FA90097BA76 /* MenuScene.ccbi */; };
+		48240B50175A53BD0097BA76 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48240B4E175A53BD0097BA76 /* GameScene.cpp */; };
+		48240B52175A56A40097BA76 /* GameScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 48240B51175A56A40097BA76 /* GameScene.ccbi */; };
 		487F1B6E17573FD600639D24 /* hero.png in Resources */ = {isa = PBXBuildFile; fileRef = 487F1B6D17573FD600639D24 /* hero.png */; };
 		48C3B85517573C900058D6B3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C3B85417573C900058D6B3 /* QuartzCore.framework */; };
 		48C3B85717573C900058D6B3 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C3B85617573C900058D6B3 /* OpenGLES.framework */; };
@@ -284,6 +291,15 @@
 		481619271759E81300420CA9 /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameObject.cpp; path = Classes/GameObject.cpp; sourceTree = "<group>"; };
 		481619281759E81300420CA9 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameObject.h; path = Classes/GameObject.h; sourceTree = "<group>"; };
 		4816192A1759ED9D00420CA9 /* bg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg1.png; path = Resources/bg1.png; sourceTree = "<group>"; };
+		4816192C1759EFBE00420CA9 /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MenuScene.cpp; path = Classes/MenuScene.cpp; sourceTree = "<group>"; };
+		4816192D1759EFBE00420CA9 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuScene.h; path = Classes/MenuScene.h; sourceTree = "<group>"; };
+		48240B46175A4FA90097BA76 /* bgMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bgMenu.png; path = Resources/bgMenu.png; sourceTree = "<group>"; };
+		48240B47175A4FA90097BA76 /* menu_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_n.png; path = Resources/menu_n.png; sourceTree = "<group>"; };
+		48240B48175A4FA90097BA76 /* menu_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_s.png; path = Resources/menu_s.png; sourceTree = "<group>"; };
+		48240B49175A4FA90097BA76 /* MenuScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = MenuScene.ccbi; path = Resources/MenuScene.ccbi; sourceTree = "<group>"; };
+		48240B4E175A53BD0097BA76 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = Classes/GameScene.cpp; sourceTree = "<group>"; };
+		48240B4F175A53BD0097BA76 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = Classes/GameScene.h; sourceTree = "<group>"; };
+		48240B51175A56A40097BA76 /* GameScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = GameScene.ccbi; path = Resources/GameScene.ccbi; sourceTree = "<group>"; };
 		487F1B6D17573FD600639D24 /* hero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hero.png; path = Resources/hero.png; sourceTree = "<group>"; };
 		487F1B6F1757403100639D24 /* xu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xu.h; path = Classes/xu.h; sourceTree = "<group>"; };
 		48C3B85117573C900058D6B3 /* joker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = joker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -930,7 +946,12 @@
 				48C3B87417573C900058D6B3 /* Icon-Small@2x.png */,
 				4816192A1759ED9D00420CA9 /* bg1.png */,
 				4816191E1759E5D700420CA9 /* GameUI1.plist */,
+				48240B46175A4FA90097BA76 /* bgMenu.png */,
+				48240B47175A4FA90097BA76 /* menu_n.png */,
+				48240B48175A4FA90097BA76 /* menu_s.png */,
+				48240B49175A4FA90097BA76 /* MenuScene.ccbi */,
 				4816191F1759E5D700420CA9 /* GameUI1.pvr */,
+				48240B51175A56A40097BA76 /* GameScene.ccbi */,
 				481619201759E5D700420CA9 /* hero.ccbi */,
 				48C3B87617573C900058D6B3 /* Icon.png */,
 				48C3B87817573C900058D6B3 /* Icon@2x.png */,
@@ -2007,6 +2028,10 @@
 				481619251759E7D500420CA9 /* Hero.h */,
 				481619271759E81300420CA9 /* GameObject.cpp */,
 				481619281759E81300420CA9 /* GameObject.h */,
+				4816192C1759EFBE00420CA9 /* MenuScene.cpp */,
+				4816192D1759EFBE00420CA9 /* MenuScene.h */,
+				48240B4E175A53BD0097BA76 /* GameScene.cpp */,
+				48240B4F175A53BD0097BA76 /* GameScene.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2079,6 +2104,11 @@
 				481619221759E5D700420CA9 /* GameUI1.pvr in Resources */,
 				481619231759E5D700420CA9 /* hero.ccbi in Resources */,
 				4816192B1759ED9D00420CA9 /* bg1.png in Resources */,
+				48240B4A175A4FA90097BA76 /* bgMenu.png in Resources */,
+				48240B4B175A4FA90097BA76 /* menu_n.png in Resources */,
+				48240B4C175A4FA90097BA76 /* menu_s.png in Resources */,
+				48240B4D175A4FA90097BA76 /* MenuScene.ccbi in Resources */,
+				48240B52175A56A40097BA76 /* GameScene.ccbi in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2327,6 +2357,8 @@
 				48C3BBCC17573C960058D6B3 /* HelloWorldScene.cpp in Sources */,
 				481619261759E7D500420CA9 /* Hero.cpp in Sources */,
 				481619291759E81300420CA9 /* GameObject.cpp in Sources */,
+				4816192E1759EFBE00420CA9 /* MenuScene.cpp in Sources */,
+				48240B50175A53BD0097BA76 /* GameScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,6 +2,7 @@
 #include "SimpleAudioEngine.h"
 #include "xu.h"
 #include "Hero.h"
+#include "MenuScene.h"
 using namespace cocos2d;
 using namespace CocosDenshion;
 
@@ -97,6 +98,6 @@ void HelloWorld::ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEve
 
     ((GameObject *) (herox))->handleCollisionWith(NULL);
     
-    
+    CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.2f, MenuScene::scene()));
 
 }
