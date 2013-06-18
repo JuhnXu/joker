@@ -63,12 +63,18 @@ bool HelloWorld::init()
     ccbr->autorelease();
     
     herox = ccbr->readNodeGraphFromFile("lrc.ccbi");
-    herox->setPosition(ccp(WINSIZE_W - HERO_SIZE_W  ,HERO_SIZE_H ));
+//    herox->setPosition(ccp(WINSIZE_W - HERO_SIZE_W  ,HERO_SIZE_H ));
 
+    heroShell = CCSprite::create();
+    heroShell->addChild(herox);
+    heroShell->setPosition(ccp(WINSIZE_W - HERO_SIZE_W  ,HERO_SIZE_H ));
+    this->addChild(heroShell);
     //2013年06月19日 星期三
-    //用ccbuilder做的ccnode发现再进行运动的时候会有奇怪的运动轨迹
+    //用ccbuilder做的ccnode直接操控发现再进行运动的时候会有奇怪的运动轨迹 ，可能只能用ccb控制动作
+    //但系可以用一个ccnode包含ccb，操控ccnode使得ccb做运动
+    
 //    herox->runAction(CCMoveTo::create(1, ccp(WINSIZE_W /2, WINSIZE_H /2)));
-    this->addChild(herox);
+//    this->addChild(herox);
     
     //开启触摸
     setTouchEnabled(true);
@@ -76,6 +82,14 @@ bool HelloWorld::init()
     SimpleAudioEngine::sharedEngine()->playBackgroundMusic(BG_MT_FIGHT);
     
     
+    ccBezierConfig bezierCfg;
+    bezierCfg.controlPoint_1 = ccp(0, WINSIZE_H /2);
+    bezierCfg.controlPoint_2 = ccp(-WINSIZE_W + HERO_SIZE_W, WINSIZE_H /2);
+    bezierCfg.endPosition = ccp(-WINSIZE_W + HERO_SIZE_W, 0);
+    
+//    pCloseItem->runAction(CCBezierTo::create(3, bezierCfg));
+
+
     return true;
 }
 
@@ -117,10 +131,24 @@ void HelloWorld::ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEve
     
     herox->runAction(CCBezierTo::create(1, bezierCfg));
     #endif
-    CCLog("hero 's location1 is ( %f,%f)" , herox->getPosition().x ,herox->getPosition().y);
-    herox->runAction(CCMoveBy::create(1, ccp(WINSIZE_W, WINSIZE_H)));
-    CCLog("hero 's location2 is ( %f,%f)" , herox->getPosition().x ,herox->getPosition().y);
-    
+//    CCLog("hero 's location1 is ( %f,%f)" , herox->getPosition().x ,herox->getPosition().y);
+//    herox->runAction(CCMoveBy::create(1, ccp(WINSIZE_W, WINSIZE_H)));
+//    CCLog("hero 's location2 is ( %f,%f)" , herox->getPosition().x ,herox->getPosition().y);
+//
+    if (m_isRight) {
+        
+        heroShell->runAction(CCMoveTo::create(0.2, ccp(HERO_SIZE_W, HERO_SIZE_H)));
+        heroShell->runAction(CCRotateBy::create(0.2, 180));
+        heroShell->runAction(CCScaleBy::create(0.2, 1, -1));
+        
+        m_isRight = false;
+    }else
+    {
+        heroShell->runAction(CCMoveTo::create(0.2, ccp(WINSIZE_W - HERO_SIZE_W, HERO_SIZE_H)));
+        heroShell->runAction(CCRotateBy::create(0.2, 180));
+        heroShell->runAction(CCScaleBy::create(0.2, 1, -1));
+        m_isRight = true;
+    }
 }
 
 void HelloWorld::update(float dt)

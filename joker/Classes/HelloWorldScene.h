@@ -13,6 +13,8 @@ public:
     
     CCSprite *m_bg;
     CCSprite *m_bg_re;
+    CCSprite *heroShell;
+    bool m_isRight = true;
     int m_bgH  ,m_bgreH = 0;
     bool m_isReload = false;
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
