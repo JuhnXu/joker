@@ -3,12 +3,18 @@
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
+#include "xu.h"
 USING_NS_CC_EXT;
 USING_NS_CC;
 class HelloWorld : public cocos2d::CCLayer
 {
 public:
     CCNode *herox ;
+    
+    CCSprite *m_bg;
+    CCSprite *m_bg_re;
+    int m_bgH  ,m_bgreH = 0;
+    bool m_isReload = false;
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
     virtual bool init();
 
@@ -23,6 +29,10 @@ public:
     
     
     void ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent);
+    
+    void initBackground();
+    void movingBackground();
+    void update(float dt);
 };
 
 #endif // __HELLOWORLD_SCENE_H__
