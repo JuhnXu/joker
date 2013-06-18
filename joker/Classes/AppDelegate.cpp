@@ -11,6 +11,7 @@
 #include "cocos2d.h"
 #include "SimpleAudioEngine.h"
 #include "HelloWorldScene.h"
+#include "xu.h"
 
 USING_NS_CC;
 using namespace CocosDenshion;
@@ -32,7 +33,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     // 铺满屏幕，如果宽高比不一致，会拉伸导致失真
 //    CCEGLView::sharedOpenGLView()->setDesignResolutionSize(320, 480, kResolutionExactFit);
-    CCEGLView::sharedOpenGLView()->setDesignResolutionSize(640, 960, kResolutionExactFit);
+    CCEGLView::sharedOpenGLView()->setDesignResolutionSize(WINSIZE_W, WINSIZE_H, kResolutionExactFit);
     // turn on display FPS
     pDirector->setDisplayStats(true);
 
