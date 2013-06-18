@@ -32,7 +32,7 @@ void GameScene::onEnter()
     CCLayer::onEnter();
 
     
-    setTouchEnabled(true);
+    this->setTouchEnabled(true);
     
     CCObject *obj ;
     CCARRAY_FOREACH(this->getChildren(), obj)
@@ -86,10 +86,16 @@ void GameScene::handleLevelComplete()
     CCDirector::sharedDirector()->replaceScene(MenuScene::scene());
 }
 
+void GameScene::registerWithTouchDispatcher()
+{
+    CCDirector* pDirector = CCDirector::sharedDirector();
+    pDirector->getTouchDispatcher()->addTargetedDelegate(this, this->getTouchPriority(), true);
+}
 
-void GameScene::ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent)
+bool GameScene::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
     CCLog("!!!");
+    return true;
 }
 
 //加载器

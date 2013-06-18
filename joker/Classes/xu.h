@@ -16,7 +16,7 @@ const static char DIALOG_HERO[] = "hero.png";
 const static char BG_1[]        = "bg1.png";
 
 //宏
-#define WINSIZE_W 320
-#define WINSIZE_H 480
+#define WINSIZE_W 640
+#define WINSIZE_H 960
 
 #endif

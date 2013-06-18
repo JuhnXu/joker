@@ -42,9 +42,10 @@ public:
     int getScore();
     void setScore(int s);
     
+    void registerWithTouchDispatcher();
     
-    
-     void ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent);
+    bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
+
 };
 
 

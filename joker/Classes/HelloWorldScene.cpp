@@ -66,6 +66,7 @@ bool HelloWorld::init()
     
     CCSprite *bg1 = CCSprite::create(BG_1);
     this->addChild(bg1);
+
     bg1->setPosition(ccp(WINSIZE_W/2,WINSIZE_H/2));
     
     //加载英雄动画
@@ -74,7 +75,7 @@ bool HelloWorld::init()
     CCBReader *ccbr = new CCBReader(lib);
     ccbr->autorelease();
     
-    herox = ccbr->readNodeGraphFromFile("hero.ccbi");
+    herox = ccbr->readNodeGraphFromFile("lrc.ccbi");
     herox->setPosition(ccp(WINSIZE_W/2,WINSIZE_H/2));
     this->addChild(herox);
     
@@ -87,6 +88,8 @@ bool HelloWorld::init()
 
 void HelloWorld::menuCloseCallback(CCObject* pSender)
 {
+    
+    
     CCDirector::sharedDirector()->end();
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)

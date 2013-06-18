@@ -280,6 +280,9 @@
 		48C3BBC217573C960058D6B3 /* cpVect.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C3BBC117573C960058D6B3 /* cpVect.c */; };
 		48C3BBC917573C960058D6B3 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48C3BBC817573C960058D6B3 /* AppDelegate.cpp */; };
 		48C3BBCC17573C960058D6B3 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48C3BBCB17573C960058D6B3 /* HelloWorldScene.cpp */; };
+		48DFC84C17706D8A007E1507 /* lrc.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 48DFC84917706D8A007E1507 /* lrc.ccbi */; };
+		48DFC84D17706D8A007E1507 /* lrc.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48DFC84A17706D8A007E1507 /* lrc.plist */; };
+		48DFC84E17706D8A007E1507 /* lrc.png in Resources */ = {isa = PBXBuildFile; fileRef = 48DFC84B17706D8A007E1507 /* lrc.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -865,6 +868,9 @@
 		48C3BBC817573C960058D6B3 /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
 		48C3BBCA17573C960058D6B3 /* HelloWorldScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = Classes/HelloWorldScene.h; sourceTree = "<group>"; };
 		48C3BBCB17573C960058D6B3 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HelloWorldScene.cpp; path = Classes/HelloWorldScene.cpp; sourceTree = "<group>"; };
+		48DFC84917706D8A007E1507 /* lrc.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = lrc.ccbi; path = Resources/lrc.ccbi; sourceTree = "<group>"; };
+		48DFC84A17706D8A007E1507 /* lrc.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = lrc.plist; path = Resources/lrc.plist; sourceTree = "<group>"; };
+		48DFC84B17706D8A007E1507 /* lrc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lrc.png; path = Resources/lrc.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -947,6 +953,9 @@
 				4816192A1759ED9D00420CA9 /* bg1.png */,
 				4816191E1759E5D700420CA9 /* GameUI1.plist */,
 				48240B46175A4FA90097BA76 /* bgMenu.png */,
+				48DFC84917706D8A007E1507 /* lrc.ccbi */,
+				48DFC84A17706D8A007E1507 /* lrc.plist */,
+				48DFC84B17706D8A007E1507 /* lrc.png */,
 				48240B47175A4FA90097BA76 /* menu_n.png */,
 				48240B48175A4FA90097BA76 /* menu_s.png */,
 				48240B49175A4FA90097BA76 /* MenuScene.ccbi */,
@@ -2109,6 +2118,9 @@
 				48240B4C175A4FA90097BA76 /* menu_s.png in Resources */,
 				48240B4D175A4FA90097BA76 /* MenuScene.ccbi in Resources */,
 				48240B52175A56A40097BA76 /* GameScene.ccbi in Resources */,
+				48DFC84C17706D8A007E1507 /* lrc.ccbi in Resources */,
+				48DFC84D17706D8A007E1507 /* lrc.plist in Resources */,
+				48DFC84E17706D8A007E1507 /* lrc.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
