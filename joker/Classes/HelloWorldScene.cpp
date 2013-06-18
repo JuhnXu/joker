@@ -64,6 +64,10 @@ bool HelloWorld::init()
     
     herox = ccbr->readNodeGraphFromFile("lrc.ccbi");
     herox->setPosition(ccp(WINSIZE_W - HERO_SIZE_W  ,HERO_SIZE_H ));
+
+    //2013年06月19日 星期三
+    //用ccbuilder做的ccnode发现再进行运动的时候会有奇怪的运动轨迹
+//    herox->runAction(CCMoveTo::create(1, ccp(WINSIZE_W /2, WINSIZE_H /2)));
     this->addChild(herox);
     
     //开启触摸
@@ -90,10 +94,33 @@ void HelloWorld::menuCloseCallback(CCObject* pSender)
 void HelloWorld::ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent)
 {
 
-    ((GameObject *) (herox))->handleCollisionWith(NULL);
+//    ((GameObject *) (herox))->handleCollisionWith(NULL);
     
-    CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.2f, MenuScene::scene()));
+//    CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.2f, MenuScene::scene()));
 
+#if 0
+    ccBezierConfig bezier2;
+    bezier2.controlPoint_1 = ccp(100, s.height/2);
+    bezier2.controlPoint_2 = ccp(200, -s.height/2);
+    bezier2.endPosition = ccp(240,160);
+    
+    CCActionInterval*  bezierTo1 = CCBezierTo::create(2, bezier2);
+
+    ccBezierConfig bezierCfg;
+    bezierCfg.controlPoint_1 = ccp(0, WINSIZE_H /2);
+    bezierCfg.controlPoint_2 = ccp(-WINSIZE_W + HERO_SIZE_W, WINSIZE_H /2);
+    bezierCfg.endPosition = ccp(-WINSIZE_W + HERO_SIZE_W, 0);
+    
+//    bezierCfg.controlPoint_1 = ccp(0, WINSIZE_H /2);
+//    bezierCfg.controlPoint_2 = ccp(-WINSIZE_W + HERO_SIZE_W, WINSIZE_H /2);
+//    bezierCfg.endPosition = ccp(-WINSIZE_W + HERO_SIZE_W, 0);
+    
+    herox->runAction(CCBezierTo::create(1, bezierCfg));
+    #endif
+    CCLog("hero 's location1 is ( %f,%f)" , herox->getPosition().x ,herox->getPosition().y);
+    herox->runAction(CCMoveBy::create(1, ccp(WINSIZE_W, WINSIZE_H)));
+    CCLog("hero 's location2 is ( %f,%f)" , herox->getPosition().x ,herox->getPosition().y);
+    
 }
 
 void HelloWorld::update(float dt)
