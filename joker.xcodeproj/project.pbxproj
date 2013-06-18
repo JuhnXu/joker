@@ -14,6 +14,7 @@
 		481619291759E81300420CA9 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 481619271759E81300420CA9 /* GameObject.cpp */; };
 		4816192B1759ED9D00420CA9 /* bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4816192A1759ED9D00420CA9 /* bg1.png */; };
 		4816192E1759EFBE00420CA9 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4816192C1759EFBE00420CA9 /* MenuScene.cpp */; };
+		4818C19D1770E824008AA088 /* Whirlwind.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4818C19C1770E824008AA088 /* Whirlwind.wav */; };
 		48240B4A175A4FA90097BA76 /* bgMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 48240B46175A4FA90097BA76 /* bgMenu.png */; };
 		48240B4B175A4FA90097BA76 /* menu_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 48240B47175A4FA90097BA76 /* menu_n.png */; };
 		48240B4C175A4FA90097BA76 /* menu_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 48240B48175A4FA90097BA76 /* menu_s.png */; };
@@ -298,6 +299,7 @@
 		4816192A1759ED9D00420CA9 /* bg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg1.png; path = Resources/bg1.png; sourceTree = "<group>"; };
 		4816192C1759EFBE00420CA9 /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MenuScene.cpp; path = Classes/MenuScene.cpp; sourceTree = "<group>"; };
 		4816192D1759EFBE00420CA9 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuScene.h; path = Classes/MenuScene.h; sourceTree = "<group>"; };
+		4818C19C1770E824008AA088 /* Whirlwind.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Whirlwind.wav; path = Resources/Whirlwind.wav; sourceTree = "<group>"; };
 		48240B46175A4FA90097BA76 /* bgMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bgMenu.png; path = Resources/bgMenu.png; sourceTree = "<group>"; };
 		48240B47175A4FA90097BA76 /* menu_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_n.png; path = Resources/menu_n.png; sourceTree = "<group>"; };
 		48240B48175A4FA90097BA76 /* menu_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_s.png; path = Resources/menu_s.png; sourceTree = "<group>"; };
@@ -970,6 +972,7 @@
 				481619201759E5D700420CA9 /* hero.ccbi */,
 				48C3B87617573C900058D6B3 /* Icon.png */,
 				48C3B87817573C900058D6B3 /* Icon@2x.png */,
+				4818C19C1770E824008AA088 /* Whirlwind.wav */,
 				48C3B87A17573C900058D6B3 /* iTunesArtwork */,
 				48C3B87C17573C900058D6B3 /* Info.plist */,
 			);
@@ -2129,6 +2132,7 @@
 				48DFC84E17706D8A007E1507 /* lrc.png in Resources */,
 				48558E4917708D740045A3AB /* bg2.png in Resources */,
 				48C12C151770A83C00B8560F /* mt_fighter.mp3 in Resources */,
+				4818C19D1770E824008AA088 /* Whirlwind.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

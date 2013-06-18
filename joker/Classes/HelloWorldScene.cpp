@@ -79,7 +79,7 @@ bool HelloWorld::init()
     //开启触摸
     setTouchEnabled(true);
     scheduleUpdate();
-    SimpleAudioEngine::sharedEngine()->playBackgroundMusic(BG_MT_FIGHT);
+    SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_MT_FIGHT);
     
     
     ccBezierConfig bezierCfg;
@@ -149,6 +149,7 @@ void HelloWorld::ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEve
         heroShell->runAction(CCScaleBy::create(0.2, 1, -1));
         m_isRight = true;
     }
+    SimpleAudioEngine::sharedEngine()->playEffect(MUSIC_MT_WHIRLWIND);
 }
 
 void HelloWorld::update(float dt)

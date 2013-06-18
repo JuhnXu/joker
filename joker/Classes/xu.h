@@ -18,7 +18,9 @@ const static char S_BG_2[]        = "bg2.png";
 
 
 //音乐
-const static char BG_MT_FIGHT[] = "mt_fighter.mp3";
+const static char MUSIC_MT_FIGHT[] = "mt_fighter.mp3";
+
+const static char MUSIC_MT_WHIRLWIND[] = "Whirlwind.wav"; //旋风斩
 
 /////////////////////////////////
 //参数
