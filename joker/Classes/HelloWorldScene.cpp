@@ -24,17 +24,13 @@ CCScene* HelloWorld::scene()
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
-    //////////////////////////////
-    // 1. super init first
+
     if ( !CCLayer::init() )
     {
         return false;
     }
 
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
-    
+
     /////////////////////////////    
     //关闭按钮
     // add a "close" icon to exit the progress. it's an autorelease object
@@ -69,9 +65,7 @@ bool HelloWorld::init()
     heroShell->addChild(herox);
     heroShell->setPosition(ccp(WINSIZE_W - HERO_SIZE_W  ,HERO_SIZE_H ));
     this->addChild(heroShell);
-    //2013年06月19日 星期三
-    //用ccbuilder做的ccnode直接操控发现再进行运动的时候会有奇怪的运动轨迹 ，可能只能用ccb控制动作
-    //但系可以用一个ccnode包含ccb，操控ccnode使得ccb做运动
+
     
 //    herox->runAction(CCMoveTo::create(1, ccp(WINSIZE_W /2, WINSIZE_H /2)));
 //    this->addChild(herox);
@@ -82,13 +76,24 @@ bool HelloWorld::init()
     SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_MT_FIGHT);
     
     
-    ccBezierConfig bezierCfg;
-    bezierCfg.controlPoint_1 = ccp(0, WINSIZE_H /2);
-    bezierCfg.controlPoint_2 = ccp(-WINSIZE_W + HERO_SIZE_W, WINSIZE_H /2);
-    bezierCfg.endPosition = ccp(-WINSIZE_W + HERO_SIZE_W, 0);
     
-//    pCloseItem->runAction(CCBezierTo::create(3, bezierCfg));
+    
 
+
+    
+#if 0
+    //返回重复动作用reverse
+    //用关闭按钮来测试贝塞尔曲线
+    bezierCfg.controlPoint_1 = ccp(0 , WINSIZE_H /2);
+    bezierCfg.controlPoint_2 = ccp(-WINSIZE_W + HERO_SIZE_W, WINSIZE_H /2);
+    bezierCfg.endPosition = ccp(-WINSIZE_W + HERO_SIZE_W * 2, 0);
+    
+    CCBezierBy *bezierToAction = CCBezierBy::create(0.7, bezierCfg);
+    //    CCMoveBy *bezierToAction = CCMoveBy::create(1, ccp(-100, 20));
+    pCloseItem->setPosition(ccp(WINSIZE_W - HERO_SIZE_W  ,HERO_SIZE_H ));
+    pCloseItem->runAction(CCRepeatForever::create(CCSequence::create(bezierToAction , bezierToAction->reverse() ,NULL)));
+#endif
+    
 
     return true;
 }
@@ -105,51 +110,42 @@ void HelloWorld::menuCloseCallback(CCObject* pSender)
     exit(0);
 #endif
 }
+
 void HelloWorld::ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent)
 {
 
-//    ((GameObject *) (herox))->handleCollisionWith(NULL);
-    
-//    CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.2f, MenuScene::scene()));
 
-#if 0
-    ccBezierConfig bezier2;
-    bezier2.controlPoint_1 = ccp(100, s.height/2);
-    bezier2.controlPoint_2 = ccp(200, -s.height/2);
-    bezier2.endPosition = ccp(240,160);
-    
-    CCActionInterval*  bezierTo1 = CCBezierTo::create(2, bezier2);
+    if (!m_isMoving) {
+        m_isMoving = true;
 
-    ccBezierConfig bezierCfg;
-    bezierCfg.controlPoint_1 = ccp(0, WINSIZE_H /2);
-    bezierCfg.controlPoint_2 = ccp(-WINSIZE_W + HERO_SIZE_W, WINSIZE_H /2);
-    bezierCfg.endPosition = ccp(-WINSIZE_W + HERO_SIZE_W, 0);
-    
-//    bezierCfg.controlPoint_1 = ccp(0, WINSIZE_H /2);
-//    bezierCfg.controlPoint_2 = ccp(-WINSIZE_W + HERO_SIZE_W, WINSIZE_H /2);
-//    bezierCfg.endPosition = ccp(-WINSIZE_W + HERO_SIZE_W, 0);
-    
-    herox->runAction(CCBezierTo::create(1, bezierCfg));
-    #endif
-//    CCLog("hero 's location1 is ( %f,%f)" , herox->getPosition().x ,herox->getPosition().y);
-//    herox->runAction(CCMoveBy::create(1, ccp(WINSIZE_W, WINSIZE_H)));
-//    CCLog("hero 's location2 is ( %f,%f)" , herox->getPosition().x ,herox->getPosition().y);
-//
-    if (m_isRight) {
+        if (m_isRight) {
+
+            //跳到对面再翻转x坐标
+            heroShell->runAction(
+                                 CCSequence::create(CCMoveTo::create(0.2, ccp(HERO_SIZE_W, HERO_SIZE_H))
+                                                    ,CCScaleBy::create(0, -1, 1)
+                                                    ,CCCallFunc::create(this, callfunc_selector(HelloWorld::setFinishMoving)),NULL));
+
+            
+            m_isRight = false;
+            
+        }else
+        {
+             heroShell->runAction(CCSequence::create(CCMoveTo::create(0.2, ccp(WINSIZE_W - HERO_SIZE_W, HERO_SIZE_H))
+                                                     ,CCScaleBy::create(0, -1, 1)
+                                                     ,CCCallFunc::create(this, callfunc_selector(HelloWorld::setFinishMoving)),NULL));
+
+            m_isRight = true;
+            
+        }
+        //翻滚音乐，用旋风斩吧哈哈
+        SimpleAudioEngine::sharedEngine()->playEffect(MUSIC_MT_WHIRLWIND);
+
+       
         
-        heroShell->runAction(CCMoveTo::create(0.2, ccp(HERO_SIZE_W, HERO_SIZE_H)));
-        heroShell->runAction(CCRotateBy::create(0.2, 180));
-        heroShell->runAction(CCScaleBy::create(0.2, 1, -1));
-        
-        m_isRight = false;
-    }else
-    {
-        heroShell->runAction(CCMoveTo::create(0.2, ccp(WINSIZE_W - HERO_SIZE_W, HERO_SIZE_H)));
-        heroShell->runAction(CCRotateBy::create(0.2, 180));
-        heroShell->runAction(CCScaleBy::create(0.2, 1, -1));
-        m_isRight = true;
     }
-    SimpleAudioEngine::sharedEngine()->playEffect(MUSIC_MT_WHIRLWIND);
+    
+    
 }
 
 void HelloWorld::update(float dt)
@@ -160,6 +156,12 @@ void HelloWorld::update(float dt)
 
 void HelloWorld::initBackground()
 {
+    m_objectmap = CCTMXTiledMap::create("pretab1.tmx");
+    m_objectmap->setAnchorPoint(ccp(0, 0));
+    this->addChild(m_objectmap);
+    
+   
+
     m_bg = CCSprite::create(S_BG_2);
     m_bg->setAnchorPoint(ccp(0, 0));
     m_bgH = m_bg->getContentSize().height;
@@ -180,6 +182,21 @@ void HelloWorld::movingBackground()
 {
     //滚动背景
     
+   
+    /////////////////////////////////////
+    //// 阻碍物下滑
+    
+    
+    m_objectmap->runAction(CCMoveBy::create(OFFSET_H_TIME , ccp(0, -OFFSET_H_BG *2)));
+    
+    if (m_objectmap->getPosition().y <= -640) {
+        //如果超出了屏幕就重新放到前面
+        //设想是可以后面拼接多个不同的场景的
+        m_objectmap->setPosition(ccp(0, WINSIZE_H));
+
+    }
+    //// ~阻碍物下滑
+    
     m_bg->runAction(CCMoveBy::create(OFFSET_H_TIME, ccp(0, -OFFSET_H_BG)));
     m_bgH -= OFFSET_H_BG;
     
@@ -193,6 +210,7 @@ void HelloWorld::movingBackground()
             addChild(m_bg_re,-10);
             m_bg_re->setPosition(ccp(0, WINSIZE_H));
             
+
             m_isReload = true;
         }
         // 第二张图紧接着第一张图滚动
@@ -214,8 +232,16 @@ void HelloWorld::movingBackground()
         
         // 反转标志位
         m_isReload = false;
+
     }
     
     
 
 }
+
+void HelloWorld::setFinishMoving()
+{
+    //完成移动，可以继续点击
+    m_isMoving = false;
+}
+

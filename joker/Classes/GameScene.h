@@ -16,51 +16,44 @@ USING_NS_CC;
 USING_NS_CC_EXT;
 class GameScene : public cocos2d::CCLayer
 {
-private:
-    cocos2d::CCLayer* levelLayer;
-    cocos2d::CCLabelTTF* scoreLabel;
-    cocos2d::CCNode* hero;
-    
-    int score;
-    
 public:
-    static GameScene* sharedInstance;
+    CCNode *herox ;
     
-    static GameScene* sharedScene();
+    CCSprite *m_bg;
+    CCSprite *m_bg_re;
+    CCSprite *heroShell;
+    ccBezierConfig bezierCfg;
+    CCTMXTiledMap *m_objectmap;
     
+    bool m_isMoving = false;
+    bool m_isRight = true;
+    int m_bgH  ,m_bgreH = 0;
+    bool m_isReload = false;
+    // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
+    virtual bool init();
+    
+    // there's no 'id' in cpp, so we recommend to return the class instance pointer
     static cocos2d::CCScene* scene();
     
-    virtual void onEnter();
+    // a selector callback
+    void menuCloseCallback(CCObject* pSender);
     
-    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(GameScene, create);
+    // preprocessor macro for "static create()" constructor ( node() deprecated )
+    CREATE_FUNC(GameScene);
     
-    bool init();
     
-    void handleGameOver();
-    void handleLevelComplete();
+    void ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent);
     
-    int getScore();
-    void setScore(int s);
-    
-    void registerWithTouchDispatcher();
-    
-    bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
+    void initBackground();
+    void movingBackground();
+    void update(float dt);
+    void setFinishMoving();
 
 };
 
 
 
 
-class GameSceneLoader : public cocos2d::extension::CCLayerLoader
-{
-public:
-    CCB_STATIC_NEW_AUTORELEASE_OBJECT_METHOD(GameSceneLoader, loader);
-    static GameScene* load();
-    
-protected:
-    CCB_VIRTUAL_NEW_AUTORELEASE_CREATECCNODE_METHOD(GameScene);
-    
-};
 
 
 #endif /* defined(__joker__GameScene__) */

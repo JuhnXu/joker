@@ -14,6 +14,10 @@ public:
     CCSprite *m_bg;
     CCSprite *m_bg_re;
     CCSprite *heroShell;
+    ccBezierConfig bezierCfg;
+    CCTMXTiledMap *m_objectmap;
+
+    bool m_isMoving = false;
     bool m_isRight = true;
     int m_bgH  ,m_bgreH = 0;
     bool m_isReload = false;
@@ -35,6 +39,7 @@ public:
     void initBackground();
     void movingBackground();
     void update(float dt);
+    void setFinishMoving();
 };
 
 #endif // __HELLOWORLD_SCENE_H__

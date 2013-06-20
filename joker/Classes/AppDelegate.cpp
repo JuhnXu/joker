@@ -10,7 +10,7 @@
 
 #include "cocos2d.h"
 #include "SimpleAudioEngine.h"
-#include "HelloWorldScene.h"
+#include "GameScene.h"
 #include "xu.h"
 
 USING_NS_CC;
@@ -35,13 +35,13 @@ bool AppDelegate::applicationDidFinishLaunching()
 //    CCEGLView::sharedOpenGLView()->setDesignResolutionSize(320, 480, kResolutionExactFit);
     CCEGLView::sharedOpenGLView()->setDesignResolutionSize(WINSIZE_W, WINSIZE_H, kResolutionExactFit);
     // turn on display FPS
-    pDirector->setDisplayStats(false);
+    pDirector->setDisplayStats(true);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 30);
 
     // create a scene. it's an autorelease object
-    CCScene *pScene = HelloWorld::scene();
+    CCScene *pScene = GameScene::scene();
 
     // run
     pDirector->runWithScene(pScene);

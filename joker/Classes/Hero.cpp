@@ -23,7 +23,7 @@ void Hero::update()
 void Hero::handleCollisionWith(GameObject *gameObject)
 {
     CCBAnimationManager* animationManager = dynamic_cast<CCBAnimationManager*>(this->getUserObject());
-    animationManager->runAnimationsForSequenceNamed("attack");
+//    animationManager->runAnimationsForSequenceNamed("attack");
 }
 
 
