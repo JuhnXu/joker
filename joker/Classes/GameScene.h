@@ -24,6 +24,8 @@ public:
     CCSprite *heroShell;
     ccBezierConfig bezierCfg;
     CCTMXTiledMap *m_objectmap;
+    CCTMXTiledMap *m_baseMapRe;
+    CCSprite *layer;
     
     bool m_isMoving = false;
     bool m_isRight = true;

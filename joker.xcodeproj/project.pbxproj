@@ -290,6 +290,7 @@
 		48DFC84D17706D8A007E1507 /* lrc.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48DFC84A17706D8A007E1507 /* lrc.plist */; };
 		48DFC84E17706D8A007E1507 /* lrc.png in Resources */ = {isa = PBXBuildFile; fileRef = 48DFC84B17706D8A007E1507 /* lrc.png */; };
 		48F0B51117729276007C7CC6 /* Star.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48F0B50F17729276007C7CC6 /* Star.cpp */; };
+		48F0B51417729BCB007C7CC6 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48F0B51217729BCB007C7CC6 /* Config.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -886,6 +887,8 @@
 		48DFC84B17706D8A007E1507 /* lrc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lrc.png; path = Resources/lrc.png; sourceTree = "<group>"; };
 		48F0B50F17729276007C7CC6 /* Star.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Star.cpp; path = Classes/Star.cpp; sourceTree = "<group>"; };
 		48F0B51017729276007C7CC6 /* Star.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Star.h; path = Classes/Star.h; sourceTree = "<group>"; };
+		48F0B51217729BCB007C7CC6 /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Config.cpp; path = Classes/Config.cpp; sourceTree = "<group>"; };
+		48F0B51317729BCB007C7CC6 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Config.h; path = Classes/Config.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2064,6 +2067,8 @@
 				48240B4F175A53BD0097BA76 /* GameScene.h */,
 				48F0B50F17729276007C7CC6 /* Star.cpp */,
 				48F0B51017729276007C7CC6 /* Star.h */,
+				48F0B51217729BCB007C7CC6 /* Config.cpp */,
+				48F0B51317729BCB007C7CC6 /* Config.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2401,6 +2406,7 @@
 				4816192E1759EFBE00420CA9 /* MenuScene.cpp in Sources */,
 				48240B50175A53BD0097BA76 /* GameScene.cpp in Sources */,
 				48F0B51117729276007C7CC6 /* Star.cpp in Sources */,
+				48F0B51417729BCB007C7CC6 /* Config.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

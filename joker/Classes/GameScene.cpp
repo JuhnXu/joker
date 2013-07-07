@@ -83,12 +83,8 @@ bool GameScene::init()
     scheduleUpdate();
     SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_MT_FIGHT);
     
-    
-    
-    
-    
-    
-    
+     
+     
 #if 0
     //返回重复动作用reverse
     //用关闭按钮来测试贝塞尔曲线
@@ -100,6 +96,7 @@ bool GameScene::init()
     //    CCMoveBy *bezierToAction = CCMoveBy::create(1, ccp(-100, 20));
     pCloseItem->setPosition(ccp(WINSIZE_W - HERO_SIZE_W  ,HERO_SIZE_H ));
     pCloseItem->runAction(CCRepeatForever::create(CCSequence::create(bezierToAction , bezierToAction->reverse() ,NULL)));
+
 #endif
     
     
@@ -123,6 +120,7 @@ void GameScene::ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEven
 {
     
     
+
     if (!m_isMoving) {
         m_isMoving = true;
         
@@ -168,8 +166,14 @@ void GameScene::initBackground()
     m_objectmap->setAnchorPoint(ccp(0, 0));
     this->addChild(m_objectmap);
     
+    CCTMXLayer *buildingLayer = m_objectmap->layerNamed("layer");
+    CCSprite *node =  buildingLayer->tileAt(ccp(0, 0));
     
-    
+    if (!node) {
+        buildingLayer->setTileGID(1, ccp(0, 0));
+        
+    }
+
     m_bg = CCSprite::create(S_BG_2);
     m_bg->setAnchorPoint(ccp(0, 0));
     m_bgH = m_bg->getContentSize().height;
@@ -181,7 +185,7 @@ void GameScene::initBackground()
     m_bg->runAction(CCMoveBy::create(OFFSET_H_TIME, ccp(0, -OFFSET_H_BG)));
     
     
-    schedule(schedule_selector(GameScene:: movingBackground),OFFSET_H_TIME);
+    schedule(schedule_selector(GameScene::movingBackground),OFFSET_H_TIME);
     
     
 }
@@ -189,19 +193,24 @@ void GameScene::initBackground()
 void GameScene::movingBackground()
 {
     //滚动背景
-    
-    
+
     /////////////////////////////////////
     //// 阻碍物下滑
     
-    
-    m_objectmap->runAction(CCMoveBy::create(OFFSET_H_TIME , ccp(0, -OFFSET_H_BG *2)));
-    
-    if (m_objectmap->getPosition().y <= -640) {
-        //如果超出了屏幕就重新放到前面
-        //设想是可以后面拼接多个不同的场景的
-        m_objectmap->setPosition(ccp(0, WINSIZE_H));
+    if (m_objectmap) {
         
+        
+        m_objectmap->runAction(CCMoveBy::create(OFFSET_H_TIME *3 , ccp(0, -OFFSET_H_BG *2)));
+        
+        if (m_objectmap->getPosition().y <= -640) {
+            //如果超出了屏幕就重新放到前面
+            //设想是可以后面拼接多个不同的场景的
+            m_objectmap->setPosition(ccp(0, WINSIZE_H));
+            
+        }
+    }else
+    {
+        CCLog("m_objectmap is null");
     }
     //// ~阻碍物下滑
     
