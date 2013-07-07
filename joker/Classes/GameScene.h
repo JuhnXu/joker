@@ -17,11 +17,11 @@ USING_NS_CC_EXT;
 class GameScene : public cocos2d::CCLayer
 {
 public:
-    CCNode *herox ;
+    CCNode *m_hero ;
     
     CCSprite *m_bg;
     CCSprite *m_bg_re;
-    CCSprite *heroShell;
+
     ccBezierConfig bezierCfg;
     CCTMXTiledMap *m_objectmap;
     CCTMXTiledMap *m_baseMapRe;
@@ -47,6 +47,7 @@ public:
     void ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent);
     
     void initBackground();
+    void initHero(const char *name);
     void movingBackground();
     void update(float dt);
     void setFinishMoving();

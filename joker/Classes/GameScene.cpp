@@ -61,20 +61,39 @@ bool GameScene::init()
     //~初始化地图
     
     //加载英雄动画
-    CCNodeLoaderLibrary *lib = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
-    lib->registerCCNodeLoader("Hero", HeroLoader::loader());
-    CCBReader *ccbr = new CCBReader(lib);
-    ccbr->autorelease();
+    initHero("hero01");
     
-    herox = ccbr->readNodeGraphFromFile("lrc.ccbi");
-    //    herox->setPosition(ccp(WINSIZE_W - HERO_SIZE_W  ,HERO_SIZE_H ));
+//    CCSpriteBatchNode *batch = CCSpriteBatchNode::create("hero01.plist", 4);
+//    this->addChild(batch);
+////    herox = CCSprite::createWithSpriteFrameName(batch->getTexture());
+//    herox = CCSprite::createWithTexture(batch->getTexture());
+//    herox->setPosition(ccp(WINSIZE_W - HERO_SIZE_W  ,HERO_SIZE_H ));
+//    batch->addChild(herox);
+//
+//    
+
+//    
+//    CCSpriteBatchNode* batchNode = CCSpriteBatchNode::create("hero01.png", 4);
+//    batchNode->setPosition(CCPointZero);
+//    this->addChild(batchNode);
+//    
+//   
+//        CCSprite* testIcon = CCSprite::createWithTexture(batchNode->getTexture());
+//        testIcon->setPosition( ccp(WINSIZE_W /2, WINSIZE_H /2) );
+//        batchNode->addChild(testIcon);
     
-    heroShell = CCSprite::create();
-    heroShell->addChild(herox);
-    heroShell->setPosition(ccp(WINSIZE_W - HERO_SIZE_W  ,HERO_SIZE_H ));
-    this->addChild(heroShell);
+
     
-    
+//    
+//    CCSpriteFrameCache *cache = CCSpriteFrameCache::sharedSpriteFrameCache();
+//    
+//    
+//    
+//    cache->addSpriteFramesWithFile("hero01.plist");
+//
+//    m_hero = CCSprite::createWithSpriteFrameName("hero01_01.png");
+//    this->addChild(m_hero);
+//    m_hero->setPosition(ccp(WINSIZE_W - HERO_SIZE_W  ,HERO_SIZE_H ));
     //    herox->runAction(CCMoveTo::create(1, ccp(WINSIZE_W /2, WINSIZE_H /2)));
     //    this->addChild(herox);
     
@@ -121,36 +140,7 @@ void GameScene::ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEven
     
     
 
-    if (!m_isMoving) {
-        m_isMoving = true;
-        
-        if (m_isRight) {
-            
-            //跳到对面再翻转x坐标
-            heroShell->runAction(
-                                 CCSequence::create(CCMoveTo::create(0.2, ccp(HERO_SIZE_W, HERO_SIZE_H))
-                                                    ,CCScaleBy::create(0, -1, 1)
-                                                    ,CCCallFunc::create(this, callfunc_selector(GameScene::setFinishMoving)),NULL));
-            
-            
-            m_isRight = false;
-            
-        }else
-        {
-            heroShell->runAction(CCSequence::create(CCMoveTo::create(0.2, ccp(WINSIZE_W - HERO_SIZE_W, HERO_SIZE_H))
-                                                    ,CCScaleBy::create(0, -1, 1)
-                                                    ,CCCallFunc::create(this, callfunc_selector(GameScene::setFinishMoving)),NULL));
-            
-            m_isRight = true;
-            
-        }
-        //翻滚音乐，用旋风斩吧哈哈
-        SimpleAudioEngine::sharedEngine()->playEffect(MUSIC_MT_WHIRLWIND);
-        
-        
-        
-    }
-    
+      
     
 }
 
@@ -162,17 +152,17 @@ void GameScene::update(float dt)
 
 void GameScene::initBackground()
 {
-    m_objectmap = CCTMXTiledMap::create("pretab1.tmx");
-    m_objectmap->setAnchorPoint(ccp(0, 0));
-    this->addChild(m_objectmap);
-    
-    CCTMXLayer *buildingLayer = m_objectmap->layerNamed("layer");
-    CCSprite *node =  buildingLayer->tileAt(ccp(0, 0));
-    
-    if (!node) {
-        buildingLayer->setTileGID(1, ccp(0, 0));
-        
-    }
+//    m_objectmap = CCTMXTiledMap::create("pretab1.tmx");
+//    m_objectmap->setAnchorPoint(ccp(0, 0));
+//    this->addChild(m_objectmap);
+//    
+//    CCTMXLayer *buildingLayer = m_objectmap->layerNamed("layer");
+//    CCSprite *node =  buildingLayer->tileAt(ccp(0, 0));
+//    
+//    if (!node) {
+//        buildingLayer->setTileGID(1, ccp(0, 0));
+//        
+//    }
 
     m_bg = CCSprite::create(S_BG_2);
     m_bg->setAnchorPoint(ccp(0, 0));
@@ -197,21 +187,21 @@ void GameScene::movingBackground()
     /////////////////////////////////////
     //// 阻碍物下滑
     
-    if (m_objectmap) {
-        
-        
-        m_objectmap->runAction(CCMoveBy::create(OFFSET_H_TIME *3 , ccp(0, -OFFSET_H_BG *2)));
-        
-        if (m_objectmap->getPosition().y <= -640) {
-            //如果超出了屏幕就重新放到前面
-            //设想是可以后面拼接多个不同的场景的
-            m_objectmap->setPosition(ccp(0, WINSIZE_H));
-            
-        }
-    }else
-    {
-        CCLog("m_objectmap is null");
-    }
+//    if (m_objectmap) {
+//        
+//        
+//        m_objectmap->runAction(CCMoveBy::create(OFFSET_H_TIME *3 , ccp(0, -OFFSET_H_BG *2)));
+//        
+//        if (m_objectmap->getPosition().y <= -640) {
+//            //如果超出了屏幕就重新放到前面
+//            //设想是可以后面拼接多个不同的场景的
+//            m_objectmap->setPosition(ccp(0, WINSIZE_H));
+//            
+//        }
+//    }else
+//    {
+//        CCLog("m_objectmap is null");
+//    }
     //// ~阻碍物下滑
     
     m_bg->runAction(CCMoveBy::create(OFFSET_H_TIME, ccp(0, -OFFSET_H_BG)));
@@ -263,3 +253,35 @@ void GameScene::setFinishMoving()
 }
 
 
+
+
+void GameScene::initHero(const char *name)
+{
+    CCSpriteFrameCache *cache = CCSpriteFrameCache::sharedSpriteFrameCache();
+    cache->addSpriteFramesWithFile(CCString::createWithFormat("%s.plist",name)->getCString());
+    
+    
+    m_hero = CCSprite::createWithSpriteFrameName(CCString::createWithFormat("%s_01.png",name)->getCString());
+    this->addChild(m_hero);
+    m_hero->setPosition(ccp(WINSIZE_W/2  ,WINSIZE_H/2 ));
+    
+    CCArray *array = CCArray::create();
+    
+    for (int i = 1; i<5; i++) {
+        CCLOG(CCString::createWithFormat("loading ... %s_0%d.png",name ,i)->getCString());
+        CCSpriteFrame *frame = cache->spriteFrameByName(CCString::createWithFormat("%s_0%d.png",name ,i)->getCString());
+        if (frame) {
+            CCLOG("frame is ok");
+        }
+        array->addObject(frame);
+    }
+    
+    //这里不能直接用CCAnimation::create，会报错强转不了
+    CCAnimation *ani = CCAnimation::createWithSpriteFrames(array ,0.2f);
+
+    
+    CCAnimate *animate = CCAnimate::create(ani);
+    m_hero->runAction(CCRepeatForever::create(animate));
+
+    
+}

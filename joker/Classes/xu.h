@@ -28,7 +28,7 @@ const static char MUSIC_MT_WHIRLWIND[] = "Whirlwind.wav"; //旋风斩
 #define WINSIZE_H 480
 
 #define OFFSET_H_BG 120 //背景偏移量
-static float OFFSET_H_TIME = 0.7 ;//背景偏移时间间隔
+static float OFFSET_H_TIME = 1.3 ;//背景偏移时间间隔
 
 //英雄的尺寸
 #define HERO_SIZE_W 32
